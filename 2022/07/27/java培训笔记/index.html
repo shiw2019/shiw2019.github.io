@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>java培训笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="java Day01(简介) Day01(简介)  java的概述  java的三大平台  java的特点  java的运行机制  java的开发环境  安装JDK  DOS常用命令  HelloWorld编写  配置环境变量  Notepad++编辑工具  注释 代码解释  常量 转义字符  输出不换行  计算机中的存储单元  基本数据类型  变量 运算符 算数运算符  作业 Eclipse开发">
+  <meta name="description" content="java培训笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java培训笔记">
 <meta property="og:url" content="http://example.com/2022/07/27/java%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="java Day01(简介) Day01(简介)  java的概述  java的三大平台  java的特点  java的运行机制  java的开发环境  安装JDK  DOS常用命令  HelloWorld编写  配置环境变量  Notepad++编辑工具  注释 代码解释  常量 转义字符  输出不换行  计算机中的存储单元  基本数据类型  变量 运算符 算数运算符  作业 Eclipse开发">
+<meta property="og:description" content="java培训笔记">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-07-27T08:42:53.000Z">
-<meta property="article:modified_time" content="2022-07-27T09:39:36.187Z">
+<meta property="article:modified_time" content="2022-07-28T14:30:37.268Z">
 <meta property="article:author" content="shiw2019">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -181,7 +181,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>java</p>
+        <h1 color="red">java培训笔记</h1>
+
+<span id="more"></span>
+
 <h1 id="Day01-简介"><a href="#Day01-简介" class="headerlink" title="Day01(简介)"></a>Day01(简介)</h1><blockquote>
 <p>Day01(简介) </p>
 <p>java的概述 </p>
@@ -253,8 +256,347 @@
 <li>使用命令将.class文件交给虚拟机,让虚拟机去执行 </li>
 <li>虚拟机会做相应的合法安全检查判断 通过检查后,然后由虚拟机解释执行为不同平台计 算机对应的机器码去执行</li>
 <li>如果不能通过合法性的检测,虚拟机就会执行相应 的异常程序 </li>
-<li>意义在于实现了跨平台</li>
+<li>意义在于实现了跨平台++++</li>
 </ol>
+</blockquote>
+<h2 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h2><blockquote>
+<p>public 表示类的修饰符,修饰的类的名字必须和文件名称 </p>
+<p>相同</p>
+<p>class 表示类 </p>
+<p>HelloWorld 类名(标识符) </p>
+<p>main方法 </p>
+<p>关键字(java赋予特殊意义的单词) </p>
+<p>都是小写字母</p>
+</blockquote>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>分为4类8种</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>关键字</th>
+<th align="center">内存中占用字节数</th>
+<th>取值范围</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>布尔型</td>
+<td>boolean</td>
+<td align="center">1</td>
+<td>true&#x2F;false</td>
+<td align="center">FALSE</td>
+</tr>
+<tr>
+<td>字节型</td>
+<td>byte</td>
+<td align="center">1</td>
+<td>-128~127</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td>短整型</td>
+<td>short</td>
+<td align="center">2</td>
+<td>-2^15~2^15-1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td>整型</td>
+<td>int</td>
+<td align="center">4</td>
+<td>-2^31~2^31-1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td>长整型</td>
+<td>long</td>
+<td align="center">8</td>
+<td>-2^63~2^63-1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td>字符型</td>
+<td>char</td>
+<td align="center">2</td>
+<td>0~2^16-1</td>
+<td align="center">‘\u000’</td>
+</tr>
+<tr>
+<td>单精度浮点型</td>
+<td>float</td>
+<td align="center">4</td>
+<td>1.4013E-45~3.4028E+38</td>
+<td align="center">0.0F</td>
+</tr>
+<tr>
+<td>双精度浮点型</td>
+<td>double</td>
+<td align="center">8</td>
+<td>4.9E-324~1.7977E+308</td>
+<td align="center">0.0D</td>
+</tr>
+</tbody></table>
+<h2 id="运算符与优先级"><a href="#运算符与优先级" class="headerlink" title="运算符与优先级"></a>运算符与优先级</h2><blockquote>
+<ol>
+<li><p>算术运算符： + ， - ， * ， &#x2F; , % , ++ , –</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">前缀自增自减法(<span class="strong">**++a,--a**</span>)：先进行自增或者自减运算，再进行表达式运算。</span><br><span class="line">后缀自增自减法(<span class="strong">**a++,a--**</span>)：先进行表达式运算，再进行自增或者自减运算。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>赋值运算符： &#x3D;</p>
+</li>
+<li><p>关系运算符： &gt; , &lt; , &gt;&#x3D; , &lt;&#x3D; , &#x3D;&#x3D; ,!&#x3D;, instanceof </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instanceof是Java中的二元运算符，左边是对象，右边是类；当对象是	右边类或子类所创建对象时，返回true；否则，返回false。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>逻辑运算符：&amp;&amp; ， || , ！</p>
+</li>
+<li><p>位运算符：&amp;，| ，^ , ~ , &gt;&gt; , &lt;&lt; , &gt;&gt;&gt;</p>
+<table>
+<thead>
+<tr>
+<th align="center">位运算符</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&amp;</td>
+<td>位与：左右两边的数中的都某一位非0时，输出位为1</td>
+</tr>
+<tr>
+<td align="center">|</td>
+<td>位或：左右两边的数中只要的某一位非0时，输出位为1</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td>位异或：左右两边数其中的某一位不相同时，输出位为1</td>
+</tr>
+<tr>
+<td align="center">~</td>
+<td>位非：对你操作数的每一位取反</td>
+</tr>
+<tr>
+<td align="center">&gt;&gt;</td>
+<td>位右移：左边的数按照右移指定的位数，向右移动到指定位置</td>
+</tr>
+<tr>
+<td align="center">&lt;&lt;</td>
+<td>位左移：右边的数按照左移指定的位数，向右移动到指定位置</td>
+</tr>
+<tr>
+<td align="center">&gt;&gt;&gt;</td>
+<td>位补零右移：左边的数按照右移指定的位数，向右移动到指定位数；用零来填补空缺位置</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>条件运算符 ： ?：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x,y,z;</span><br><span class="line">x = <span class="number">6</span>,y = <span class="number">2</span>;</span><br><span class="line">z = x&gt;y ? x-y : x+y;</span><br><span class="line"><span class="comment">//计算 z 的值，首先要判断 x&gt;y 表达的值，如果为 true，z 的值为 x-y；否则 z 的值为 x+y</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>扩展赋值运算符：+&#x3D; ， -&#x3D; ，*&#x3D; ， &#x2F;&#x3D;</p>
+</li>
+<li><p><strong>数据类型的优先级</strong></p>
+<p>低–高：</p>
+<p>(byte,short,char)&lt;int&lt;long&lt;float&lt;double</p>
+</li>
+<li><p><strong>运算符优先级</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">优先级</th>
+<th align="center">运算符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">()</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">! +(正)  -（负） ++ –</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">*  &#x2F;  %</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">+(加)   -（减）</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">&lt;   &lt;&#x3D;   &gt;  &gt;&#x3D;</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">&#x3D;&#x3D;   !&#x3D;</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">^</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">&amp;&amp;</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">||</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">?:</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">&#x3D;  +&#x3D;  -&#x3D;  *&#x3D;  &#x2F;&#x3D;  %&#x3D;</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</blockquote>
+<h1 id="Day02-变量"><a href="#Day02-变量" class="headerlink" title="Day02(变量)"></a>Day02(变量)</h1><blockquote>
+<p>Day02(变量)</p>
+<p>变量作业</p>
+<p>基本数据类型的转换 ASCII表</p>
+<p>int和char类型数据转换 运算</p>
+<p>符</p>
+<p>算数运算符</p>
+<p>赋值运算符</p>
+<p>比较运算符</p>
+<p>逻辑运算符</p>
+<p>位运算符</p>
+<p>三目算符</p>
+<p>选择控制语句</p>
+<p>Scanner类</p>
+<p>Random类</p>
+<p>循环结构</p>
+<p>while循环和do–while循环</p>
+<p>for循环</p>
+</blockquote>
+<p><strong>基本数据类型的转换</strong> (上一章也有)</p>
+<blockquote>
+<ul>
+<li>自动转换 范围小的可以向范围大的进行转换</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">byte &lt; short &lt; int &lt; long &lt; floa &lt; double </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>强制转换 范围大的向小的进行转换,需要强制类型转换</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">小范围数据类型 标识符 = (小范围数据类型) 变量名称;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="ASCII表"><a href="#ASCII表" class="headerlink" title="ASCII表"></a>ASCII表</h3><blockquote>
+<ul>
+<li><p>American Standard Code for Information Interchange，美国信息交换标准代码</p>
+</li>
+<li><p>当输入人类语的时候,操纵系统就会去查询对应的码表, 将这些语言转换为对应二进制,因为是美国人的语言 只有英文,所以ASCII中只有英文和一些标点,每个英文 </p>
+<p>字母和符号对应一个字节(8位)的二进制数字 </p>
+</li>
+<li><p>不需要我们全部记忆,只需大家记住**(0-­9)对应(48-­57), (A­-Z)对应(65-­90),(a-­z)对应(97-­122)**</p>
+</li>
+<li><p>因为不能识别中文,所以中国编写自己第一张简体中文 <strong>编码表GB2312</strong>(简体中文,符号,日本假名),因为存的字 有限,所以后来<strong>升级成为GBK</strong>(增加繁体中文和少数名族 文字),我们的操作系统,如果设置成中文就是<strong>GBK编码</strong> </p>
+</li>
+<li><p>因为后来出现了很多码表,所以世界标准组织ISO推出 了<strong>Unicode编码表(万国码表)</strong>,规定一个字符占用两个字 节</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="int和char类型数据转换"><a href="#int和char类型数据转换" class="headerlink" title="int和char类型数据转换"></a>int和char类型数据转换</h3><blockquote>
+<ul>
+<li><strong>char转换成int</strong>,字符型和数值型进行转换的时候都会查 询编码表,由于int4个字节,char2个字节,所以属于<strong>自动的</strong></li>
+</ul>
+<p>类型转换 </p>
+<ul>
+<li><p>int转换成char,需要强制类型转换 </p>
+</li>
+<li><p>如果char是汉字,转换成整数查询的就是Unicode编码表 </p>
+</li>
+<li><p>char类型的最大整数是65535,因为char没有负数 </p>
+</li>
+<li><p>char可以直接赋值为Unicode编码,格式为\uxxxx,十六进制</p>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">a</span> <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> a;</span><br><span class="line">System.out.println(b);<span class="comment">//97 </span></span><br><span class="line"><span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">97</span>;</span><br><span class="line"><span class="type">char</span> <span class="variable">d</span> <span class="operator">=</span> (<span class="type">char</span>)c;</span><br><span class="line">System.out.println(d);<span class="comment">//a </span></span><br><span class="line"><span class="type">char</span> <span class="variable">chineseChar</span> <span class="operator">=</span> <span class="string">&#x27;\u674e&#x27;</span>;</span><br><span class="line">System.out.println(chineseChar);<span class="comment">//李</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="switch-case语句"><a href="#switch-case语句" class="headerlink" title="switch case语句"></a>switch case语句</h3><blockquote>
+<ul>
+<li>switch后边的表达式只能是整型字符型（byte，short，int，char），枚举类型，其中jdk7之后支持 字符串型</li>
+<li>没有遇见break语句会一直运行到switch所有case结束</li>
+</ul>
+</blockquote>
+<h3 id="Scanner类"><a href="#Scanner类" class="headerlink" title="Scanner类"></a>Scanner类</h3><blockquote>
+<ul>
+<li><p>属于引用类型,创建的时候需要固定格式 数据类型 变量 名 &#x3D; new 数据类型(); </p>
+</li>
+<li><p>需要导入所在的包,导包格式: import java.util.Scanner; </p>
+</li>
+<li><p>创建对象 Scanner sc &#x3D; new Scanner(System.in); </p>
+</li>
+<li><p>获取输入的整数 int a &#x3D; sc.nextInt(); </p>
+</li>
+<li><p>获取输入的字符串 String str &#x3D; sc.nextLine(); </p>
+</li>
+<li><p>注意sc.nextInt()和sc.nextLine()会中断程序</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="Random类"><a href="#Random类" class="headerlink" title="Random类"></a>Random类</h3><blockquote>
+<ul>
+<li>需要导入所在的包,导包格式:</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random; </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Random</span> <span class="variable">ran</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取随机整数范围是[0,50):</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> ran.nextInt(<span class="number">50</span>); </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取随机小数范围是[0,1):</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> <span class="variable">b</span> <span class="operator">=</span> ran.nextDouble(); </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>如何获取一个[a,b]的随机数</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> rand.nextInt(b - a + <span class="number">1</span>) + a; </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取99到356的随机整数</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> rand.nextInt(<span class="number">356</span> - <span class="number">99</span> + <span class="number">1</span>) + <span class="number">99</span>;</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+<h3 id="printf"><a href="#printf" class="headerlink" title="printf"></a>printf</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.printf(<span class="string">&quot;%-14s%-16s\n&quot;</span>,<span class="string">&quot;序号&quot;</span>,<span class="string">&quot;金额（元）&quot;</span>);</span><br><span class="line">System.out.printf(<span class="string">&quot;%-13s%-16.1f\t&quot;</span>,<span class="string">&quot;总金额&quot;</span>,sum);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Day03-循环数组"><a href="#Day03-循环数组" class="headerlink" title="Day03(循环数组)"></a>Day03(循环数组)</h2><blockquote>
+<p>Day03(循环+数组)</p>
+<p>Scanner问题(next和nextLine和nextInt)</p>
+<p>循环控制语句练习</p>
+<p>数组</p>
+<p>一维数组</p>
+<p>JVM的内存划分</p>
+<p>一维数组内存原理</p>
+<p>二维数组</p>
+<p>一维数组和二维数组的内存关系</p>
+</blockquote>
+<h3 id="Scanner问题-next和nextLine和nextInt"><a href="#Scanner问题-next和nextLine和nextInt" class="headerlink" title="Scanner问题(next和nextLine和nextInt)"></a>Scanner问题(next和nextLine和nextInt)</h3><blockquote>
+<p>nextInt只会读取整数,后面的回车不会读取,所以如果出现读取完整数以后,不能读取后面的字符串,在两个读取中间加一句</p>
+<p>sc.nextLine();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> sc.nextInt(); sc.nextLine();</span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> sc.nextLine();</span><br><span class="line">System.out.println(a+<span class="string">&quot;------&quot;</span>+str);</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a><strong>数组</strong></h3><h4 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h4><blockquote>
+<ul>
+<li>数组的声明 类型 [] 数组名; </li>
+<li>[ ]在前后没有影响,一般是写在名称前方 </li>
+<li>数组的创建 数组名&#x3D; new 类型[数组长度] </li>
+<li>定义完数组的时候系统会给数组默认值,叫做动态初始 化,不同的类型初始化的值不同</li>
+</ul>
 </blockquote>
 
       
@@ -496,11 +838,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">java, 数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color1">java, 数据结构</a>
               </li>
             
             <div class="clearfix"></div>
