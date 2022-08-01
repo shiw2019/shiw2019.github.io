@@ -21,8 +21,11 @@
 <meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2022/03/ascii-2-1.png">
 <meta property="og:image" content="http://example.com/img/jvm.png">
 <meta property="og:image" content="http://example.com/img/jvm1.png">
+<meta property="og:image" content="http://example.com/..%5Cimg%5Cjvm3.png">
+<meta property="og:image" content="http://example.com/..%5Cimg%5Cjvm4.png">
+<meta property="og:image" content="http://example.com/img/jvm5.png">
 <meta property="article:published_time" content="2022-07-27T08:42:53.000Z">
-<meta property="article:modified_time" content="2022-07-29T02:51:01.952Z">
+<meta property="article:modified_time" content="2022-07-29T10:35:26.000Z">
 <meta property="article:author" content="shiw2019">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -680,6 +683,112 @@
 </ol>
 </blockquote>
 <p><img src="/../img/jvm1.png" alt="jvm1"></p>
+<h1 id="Day04-方法-面向对象"><a href="#Day04-方法-面向对象" class="headerlink" title="Day04(方法+面向对象)"></a>Day04(方法+面向对象)</h1><h3 id="方法的重载"><a href="#方法的重载" class="headerlink" title="方法的重载"></a>方法的重载</h3><blockquote>
+<ul>
+<li><p>以将这三个方法的方法名称, 保持一致,只要保证,参数类型,参数个数,参数顺序这三 者有一个不同,系统就不会将这三个方法当作同一个方法,这种形式叫做方法的重载.。</p>
+</li>
+<li><p>注意方法的重载跟修饰符,返回值,参数的名称都没有关系,只和方法名称和参数类型,参数个数,参数顺序有关系</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="方法调用参数传递的内存"><a href="#方法调用参数传递的内存" class="headerlink" title="方法调用参数传递的内存"></a>方法调用参数传递的内存</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">    testMethod(a);</span><br><span class="line">    System.out.println(a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">testMethod</span><span class="params">(<span class="type">int</span> a)</span>&#123;</span><br><span class="line">    a = <span class="number">101</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/..%5Cimg%5Cjvm3.png" alt="jvm3"></p>
+<blockquote>
+<ul>
+<li><p>在main中定义的变量a的值是100 </p>
+</li>
+<li><p>调用testMethod(a);此时在内存中testMethod压栈执行, 并且将a的值作为参数赋值给方法参数 </p>
+</li>
+<li><p>在testMethod中修改参数a的值,此时的参数仅仅和main中定义的变量a的值相同,所以修改参数的值,并不会修改main中a的值</p>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">int</span> [] arr2 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">    testMethod(arr2);</span><br><span class="line">    System.out.println(arr2[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">testMethod</span><span class="params">(<span class="type">int</span> [] arr)</span> &#123;</span><br><span class="line">    arr[<span class="number">0</span>] = <span class="number">100</span>;</span><br><span class="line">    <span class="comment">//arr = new int []&#123;100,100&#125;;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/..%5Cimg%5Cjvm4.png" alt="jvm4"></p>
+<blockquote>
+<ul>
+<li><p>在main中定义的引用类型arr2,初始化内容是1,2,3 </p>
+</li>
+<li><p>调用testMethod(int [] arr);此时在内存中testMethod压栈执行,并且将arr2的引用的堆中的地址赋值给参数arr </p>
+</li>
+<li><p>arr和arr2两者只是对同一块堆中的地址有引用 </p>
+</li>
+<li><p>在testMethod中将引用类型arr[0] &#x3D; 100;实质是修改了堆中那个对象的内容,所以arr2引用的那个堆中的内容就发生了改变 </p>
+</li>
+<li><p>如果让arr引用新的堆中的内存,并不会影响arr2的引用</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h3><blockquote>
+<ul>
+<li><p>面向对象程序设计(Object Oriented Programming）是当前主流的程序设计架构,使我们编程过程更符合人们的日常生活习惯 </p>
+</li>
+<li><p>面向过程程序设计,简称opp,c语言就是面向过程的编程语言</p>
+</li>
+<li><p>面向过程思维方式中更多的体现的是执行者（自己做事情），面向对象中更多的体现是指挥者（指挥对象做事情)</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="面向对象的三大特性"><a href="#面向对象的三大特性" class="headerlink" title="面向对象的三大特性"></a>面向对象的三大特性</h3><blockquote>
+<ul>
+<li><p>封装</p>
+<ul>
+<li><p>之前学习的方法,就是将某个功能写成方法, 编写类的过程也是一种封装 </p>
+</li>
+<li><p>提高了代码的复用性,便于调用者的使用,提高了安全性</p>
+</li>
+</ul>
+</li>
+<li><p>继承(后续讲) </p>
+</li>
+<li><p>多态(后续讲)</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h3><blockquote>
+<ul>
+<li><p>类</p>
+<p>对某一类有相同特征的事物的抽象,例如建造房子时设计的模型 </p>
+</li>
+<li><p>对象</p>
+<p>表示现实中该类事物的个体,就是类的具体实现,例如 已经建造成的一个房子 </p>
+</li>
+<li><p>属性</p>
+<p>该类事物的共有的特征,实际就是我们之前所学习的变 量,只不过和之前学过的变量稍有区别 </p>
+</li>
+<li><p>该类事物共有的功能</p>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意:我们程序的入口仍然是main,所以要想对成员变量 赋值,以及调用方法,需要在main中写具体的赋值和调用</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="类与方法调用过程的内存分析"><a href="#类与方法调用过程的内存分析" class="headerlink" title="类与方法调用过程的内存分析"></a>类与方法调用过程的内存分析</h3><p><img src="/../img/jvm5.png" alt="jvm5"></p>
+<blockquote>
+<ol>
+<li><p>class被加载到内存中的方法区,所以在方法区中就有类 的所有信息 </p>
+</li>
+<li><p>main方法压栈执行 </p>
+</li>
+<li><p>People对象在堆中创建,初始化成员变量age为0,height为0.0,weight为0.0 </p>
+</li>
+<li><p>栈中的pe引用堆中的People的内存地址 </p>
+</li>
+<li><p>将堆中的People对象的age赋值为12,height赋值为175,weight为175 </p>
+</li>
+<li><p>eat方法压栈执行,输出”吃饱就开心” </p>
+</li>
+<li><p>eat方法出栈 </p>
+</li>
+<li><p>main方法出栈,方法结束</p>
+</li>
+</ol>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意每次new对象,都会从堆内存中创建新的对象</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -784,9 +893,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2022/07/31/hexo%E9%87%8D%E8%A3%85-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          hexo重装
+        
+      </div>
+    </a>
   
-    <a href="/2022/07/19/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">十大排序算法</div>
+  
+    <a href="/2022/07/27/java-printf/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java_printf</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -912,7 +1030,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -920,11 +1046,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color2">Typora</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ubuntu安装</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">java, 数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">自我介绍</a>
               </li>
             
             <div class="clearfix"></div>

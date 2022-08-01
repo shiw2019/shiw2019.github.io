@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: Markdown | Hexo</title>
+  <title>java_printf | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/tags/Markdown/index.html">
+  <meta name="description" content="java_printf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java_printf">
+<meta property="og:url" content="http://example.com/2022/07/27/java-printf/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="java_printf">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-27T02:02:41.000Z">
+<meta property="article:modified_time" content="2022-07-26T19:46:10.000Z">
 <meta property="article:author" content="shiw2019">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -156,60 +161,235 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-java-printf" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/07/16/MarkDown%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2022-07-16T13:07:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/07/16/MarkDown%E8%AF%AD%E6%B3%95/">Markdown语法</a>
+    <h1 class="article-title" itemprop="name">
+      java_printf
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2022/07/27/java-printf/" class="archive-article-date">
+  	<time datetime="2022-07-27T02:02:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>java_printf</p>
+<span id="more"></span>
+
+<h3 id="目前printf支持以下格式："><a href="#目前printf支持以下格式：" class="headerlink" title="目前printf支持以下格式："></a>目前printf支持以下格式：</h3><blockquote>
+<p> c 单个字符Unicode</p>
+<p>b Boolean值</p>
+<p> d 十进制整数</p>
+<p>f 十进制浮点数</p>
+<p>e 浮点数(科学计数)</p>
+<p>o 八进制数</p>
+<p>s 字符串</p>
+<p>u 无符号十进制数</p>
+<p>x 十六进制数</p>
+<p>h 散列码(十六进制)</p>
+<p>% 输出百分号%</p>
+<p>printf的格式控制的完整格式：</p>
+<p>% - 0 m.n l或h 格式字符</p>
+<blockquote>
+<p>格式说明：</p>
+<p>①%：表示格式说明的起始符号，不可缺少。</p>
+<p>②-：有-表示左对齐输 出，如省略表示右对齐输出。</p>
+<p>③0：有0表示指定空位填0,如省略表示指定空位不填。</p>
+<p>④m.n：m指域宽，即对应的输出项在输出设备上所占的字符数。可以应用于各种类型的数据转换，并且其行为方式都一样。N指精度。不是所有类型的数据都能使用，且应用于不同类型号的数据通信转换时意义也不同。</p>
+</blockquote>
+<p>⑦f 格式：用来输出实数(包括单、双精度)，以小数形式输出。有以下几种用法：</p>
+<p>​	%f：不指定宽度，整数部分全部输出并输出6位小数。</p>
+<p>​	%m.nf：输出共占m列，其中有n位小数，如数值宽度小于m左端补空格。</p>
+<p>​	%-m.nf：输出共占n列，其中有n位小数，如数值宽度小于m右端补空格。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">double</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">1000.0</span> / <span class="number">3.0</span>;</span><br><span class="line">    System.out.printf(<span class="string">&quot;%8.2f\n&quot;</span>,x);     <span class="comment">//  333.33</span></span><br><span class="line">    System.out.printf(<span class="string">&quot;%08.2f\n&quot;</span>,x);    <span class="comment">//00333.33</span></span><br><span class="line">    System.out.printf(<span class="string">&quot;-%08.2f\n&quot;</span>,x);   <span class="comment">//-00333.33</span></span><br><span class="line">    System.out.printf(<span class="string">&quot;-%8.2f\n&quot;</span>,x);    <span class="comment">//-  333.33</span></span><br><span class="line">    System.out.printf(<span class="string">&quot;%-8.2f\n&quot;</span>,x);    <span class="comment">//333.33</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+</blockquote>
+<p>string:表示打印时输入字符的最大数量。</p>
+<p>f：浮点表示小数部分要显示出来的位数(默认是6位小数)，如果小数位数过多则舍入，太少则尾部补0</p>
+<p>d: 整数 整数没有小数部分，所以无法应用。如用则异常。</p>
+<p>⑤l或h:l对整型指long型，对实型指 double型。h用于将整型的格式字符修正为short型。</p>
+<p>格式字符用以指定输出项的数据类型和输出格式。</p>
+<p>①d格式：用来输出十进制整数。有以下几种用法：</p>
+<p>%d：按整型数据的实际长度输出。</p>
+<p>%md：m为指定的输出字段的宽度。如果数据的位数小于m，则左端补以空格，若大于m，则按实际位数输出。</p>
+<p>%ld：输出长整型数据。</p>
+<p>②o格式：以无符号八进制形式输出整数。对长整型可以用’%lo’格式输出。同样也可以指定字段宽度用“%mo”格式输出。</p>
+<p>例：</p>
+<p>int a &#x3D; -1;</p>
+<p>System.out.printf(‘%d, %o’, a, a);</p>
+<p>③x格式：以无符号十六进制形式输出整数。对长整型可以用’%lx’格式输出。同样也可以指定字段宽度用’%mx’格式输出。</p>
+<p>④u格式：以无符号十进制形式输出整数。对长整型可以用’%lu’格式输出。同样也可以指定字段宽度用“%mu”格式输出。</p>
+<p>⑤c格式：输出一个字符。</p>
+<p>⑥s格式：用来输出一个串。有几中用法</p>
+<p>%s：例如:printf(‘%s’, ‘CHINA’)输出’CHINA’字符串(不包括双引号)。</p>
+<p>%ms：输出的字符串占m列，如字符串本身长度大于m，则突破获m的限制,将字符串全部输出。若串长小于m，则左补空格。</p>
+<p>%-ms：如果串长小于m，则在m列范围内，字符串向左靠，右补空格。</p>
+<p>%m.ns：输出占m列，但只取字符串中左端n个字符。这n个字符输出在m列的右侧，左补空格。</p>
+<p>%-m.ns：其中m、n含义同上，n个字符输出在m列范围的左侧，右补空格。如果n&gt;m，则自动取n值，即保证n个字符正常输出。</p>
+<p>⑧e格式：以指数形式输出实数。可用以下形式：</p>
+<p>%e：数字部分(又称尾数)输出6位小数，指数部分占5位或4位。</p>
+<p>%m.ne和%-m.ne：m、n和”-”字符含义与前相同。此处n指数据的数字部分的小数位数，m表示整个输出数据所占的宽度。</p>
+<p>⑨g格式：自动选f格式或e格式中较短的一种输出，且不输出无意义的零。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/07/27/java-printf/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2022/07/27/java%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          java培训笔记
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2022/07/27/%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">自我介绍、智游</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -232,9 +412,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

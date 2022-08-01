@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: Markdown | Hexo</title>
+  <title>hexo重装 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/tags/Markdown/index.html">
+  <meta name="description" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo重装">
+<meta property="og:url" content="http://example.com/2022/07/31/hexo%E9%87%8D%E8%A3%85-1/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="hexo">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-31T13:36:36.000Z">
+<meta property="article:modified_time" content="2022-07-31T13:37:38.000Z">
 <meta property="article:author" content="shiw2019">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -156,60 +161,231 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-hexo重装-1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/07/16/MarkDown%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2022-07-16T13:07:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/07/16/MarkDown%E8%AF%AD%E6%B3%95/">Markdown语法</a>
+    <h1 class="article-title" itemprop="name">
+      hexo重装
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2022/07/31/hexo%E9%87%8D%E8%A3%85-1/" class="archive-article-date">
+  	<time datetime="2022-07-31T13:36:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>hexo</p>
+<span id="more"></span>
+
+<h2 id="为什么我的电脑里面没有hosts这个文件"><a href="#为什么我的电脑里面没有hosts这个文件" class="headerlink" title="为什么我的电脑里面没有hosts这个文件"></a>为什么我的电脑里面没有hosts这个文件</h2><blockquote>
+<p>​		Hosts文件具有系统属性，系统默认是不显示此文件的，因此很多朋友虽然找到了相应的文件夹确看不到Hosts文件，显示系统文件的方法是：  <strong>打开我的电脑，依次点击工具<del>文件夹选项</del>查看，之后在高级设置中取消勾选隐藏受保护的系统文件</strong>，确定后就完成了.这时电脑中的所有系统文件会显示出来，Hosts文件也不会例外. 你也可以用windows自带的查找功能搜索找到hosts文件。 该文件其实是一个纯文本的文件，用普通的文本编辑软件如记事本等都能打开和编辑。</p>
+</blockquote>
+<blockquote>
+<p>​	在本地电脑上查找一个lmhosts.sam文件，然后通过记事本来打开它，在将这个文件另存为hosts文件。在对这个hosts记事本文件进行修改。</p>
+<p>hosts文件的作用就是将一些常用的网址域名与其对应的IP地址建立一个关联“数据库”，当用户在浏览器中输入一个需要登录的网址时，系统会首先自动从Hosts文件中寻找对应的IP地址，一旦找到，系统会立即打开对应网页，如果没有找到，则系统再会将网址提交DNS域名解析服务器进行IP地址的解析。</p>
+</blockquote>
+<h2 id="hosts修改"><a href="#hosts修改" class="headerlink" title="hosts修改"></a>hosts修改</h2><blockquote>
+<ul>
+<li><p>访问IP查询网站：</p>
+<p><a target="_blank" rel="noopener" href="https://ipaddress.com/website/github.com">https://ipaddress.com/website/github.com</a></p>
+</li>
+<li><p>然后修改电脑的hosts<br>C:\Windows\System32\drivers\etc</p>
+</li>
+<li><p>添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">140.82.112.4	 github.com</span><br><span class="line">199.232.69.194	 github.global.ssl.fastly.net</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改完后刷新dns</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig/flushdns</span><br></pre></td></tr></table></figure></li>
+</ul>
+</blockquote>
+<h2 id="git、nodejs、npm安装"><a href="#git、nodejs、npm安装" class="headerlink" title="git、nodejs、npm安装"></a>git、nodejs、npm安装</h2><blockquote>
+<p>npm问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>打开nodejs安装位置的文件夹。并打开两个文件 npm.cmd 和 npm</strong></li>
+<li><strong>找到那2个文件里面的prefix -g替换为prefix –location&#x3D;global</strong></li>
+</ul>
+</blockquote>
+<h2 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h2><blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">//安装hexo-cli</span><br><span class="line">npm install hexo --save</span><br><span class="line">//安装hexo</span><br><span class="line">hexo init</span><br><span class="line">npm install</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">npm install hexo-deployer-git -save</span><br><span class="line">//其它命令不确定，部署这个命令一定要用git bash</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="配置SSH-key"><a href="#配置SSH-key" class="headerlink" title="配置SSH key"></a>配置SSH key</h1><blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/. ssh #检查本机已存在的ssh密钥</span><br></pre></td></tr></table></figure>
+
+<p>如果提示：No such file or directory 说明你是第一次使用git。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;邮件地址&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到<code>.ssh\id_rsa.pub</code>文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：</p>
+<p>将刚复制的内容粘贴到key那里，title随便填，保存。</p>
+<h3 id="3-1-测试是否成功"><a href="#3-1-测试是否成功" class="headerlink" title="3.1. 测试是否成功"></a>3.1. 测试是否成功</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>ssh -T git<span class="variable">@github</span>.com <span class="comment"># 注意邮箱地址不用改</span></span><br></pre></td></tr></table></figure>
+
+<p>如果提示<code>Are you sure you want to continue connecting (yes/no)?</code>，输入yes，然后会看到：</p>
+<blockquote>
+<p>Hi liuxianan! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+</blockquote>
+<p>看到这个信息说明SSH已配置成功！</p>
+<p>此时你还需要配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;liuxianan&quot;</span><br><span class="line">// 你的github用户名，非昵称</span><br><span class="line">$ git config --global user.email  &quot;xxx@qq.com&quot;</span><br><span class="line">// 填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/07/31/hexo%E9%87%8D%E8%A3%85-1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2022/08/01/idea%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%A4%A7%E5%85%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          idea快捷键大全
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2022/07/27/java%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java培训笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -232,9 +408,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
