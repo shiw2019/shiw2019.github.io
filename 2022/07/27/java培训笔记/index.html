@@ -34,8 +34,16 @@
 <meta property="og:image" content="http://example.com/2022/07/27/img/泛型接口.png">
 <meta property="og:image" content="http://example.com/img/%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95.png">
 <meta property="og:image" content="http://example.com/img/%E6%B3%9B%E5%9E%8B%E9%80%9A%E9%85%8D%E7%AC%A6.png">
+<meta property="og:image" content="http://example.com/img/Collection.png">
+<meta property="og:image" content="http://example.com/img/Map1.png">
+<meta property="og:image" content="http://example.com/img/HashSet&HashMap.png">
+<meta property="og:image" content="http://example.com/img/listFile.png">
+<meta property="og:image" content="http://example.com/img/OutputStream.png">
+<meta property="og:image" content="http://example.com/img/fileWriter.png">
+<meta property="og:image" content="http://example.com/img/fileReader.png">
+<meta property="og:image" content="http://example.com/img/OutputStreamWriter.png">
 <meta property="article:published_time" content="2022-07-27T08:42:53.973Z">
-<meta property="article:modified_time" content="2022-08-12T08:58:28.000Z">
+<meta property="article:modified_time" content="2022-08-19T04:08:32.000Z">
 <meta property="article:author" content="shiw2019">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.runoob.com/wp-content/uploads/2013/12/ZSSDMld.png">
@@ -537,19 +545,19 @@
 </blockquote>
 <h3 id="Scanner类"><a href="#Scanner类" class="headerlink" title="Scanner类"></a>Scanner类</h3><blockquote>
 <ul>
-<li><p>属于引用类型,创建的时候需要固定格式 数据类型 变量 名 &#x3D; new 数据类型(); </p>
-</li>
-<li><p>需要导入所在的包,导包格式: import java.util.Scanner; </p>
-</li>
-<li><p>创建对象 Scanner sc &#x3D; new Scanner(System.in); </p>
-</li>
-<li><p>获取输入的整数 int a &#x3D; sc.nextInt(); </p>
-</li>
-<li><p>获取输入的字符串 String str &#x3D; sc.nextLine(); </p>
-</li>
-<li><p>注意sc.nextInt()和sc.nextLine()会中断程序</p>
-</li>
+<li>属于引用类型,创建的时候需要固定格式 数据类型 变量 名 &#x3D; new 数据类型(); </li>
+<li>需要导入所在的包,导包格式: import java.util.Scanner; </li>
+<li>创建对象 Scanner sc &#x3D; new Scanner(System.in); </li>
+<li>获取输入的整数 int a &#x3D; sc.nextInt(); </li>
+<li>获取输入的字符串 String str &#x3D; sc.nextLine(); </li>
+<li>注意sc.nextInt()和sc.nextLine()会中断程序</li>
 </ul>
+</blockquote>
+<h4 id="为什么java的scanner方法nextLine第一行执行不了？"><a href="#为什么java的scanner方法nextLine第一行执行不了？" class="headerlink" title="为什么java的scanner方法nextLine第一行执行不了？"></a>为什么java的scanner方法nextLine第一行执行不了？</h4><blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">System.out.println(a);</span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> sc.nextLine();</span><br><span class="line">System.out.println(str);</span><br><span class="line">sc.close();</span><br><span class="line"></span><br><span class="line">sout:</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>nextInt（）方法会读取下一个int标志性的token,但是标点不会移动到下一行。仍然处在这一行上，当使用nextLine（）方法时会读取该行剩余所有内容，包括换行符，焦点移动到下一行的开头。所以无法读取到下一行输入的String变量。</p>
+<p>可以使用next（）方法，next（）方法以换行行为为标记。</p>
 </blockquote>
 <h3 id="Random类"><a href="#Random类" class="headerlink" title="Random类"></a>Random类</h3><blockquote>
 <ul>
@@ -1867,7 +1875,867 @@
 <p>实际上编译器会正常的将使用泛型的地方编译并进行类型擦除，然后返回实例。但是除此之外的是，如果构建泛型实例时使用了泛型语法，那么编译器将标记该实例并关注该实例后续所有方法的调用，每次调用前都进行安全检查，非指定类型的方法都不能调用成功。</p>
 <p>实际上编译器不仅关注一个泛型方法的调用，它还会为某些返回值为限定的泛型类型的方法进行强制类型转换，由于类型擦除，返回值为泛型类型的方法都会擦除成 Object 类型，当这些方法<strong>被调用后，编译器会额外插入一行 checkcast 指令用于强制类型转换</strong>，这一个过程就叫做『泛型翻译』。</p>
 </blockquote>
-<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>参考：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/6824.html">http://c.biancheng.net/view/6824.html</a></p>
+<blockquote>
+<p>在编程时，可以使用数组来保存多个对象，但数组长度不可变化，一旦在初始化数组时指定了数组长度，这个数组长度就是不可变的。如果需要<strong>保存数量变化的数据，数组就有点无能为力了。</strong>而且数组无法保存具有映射关系的数据，如成绩表为语文——79，数学——80，这种数据看上去像两个数组，但这两个数组的元素之间有一定的关联关系。</p>
+<p><strong>为了保存数量不确定的数据，以及保存具有映射关系的数据</strong>（也被称为关联数组），Java 提供了集合类。集合类主要负责保存、盛装其他数据，因此集合类也被称为容器类。Java 所有的集合类都位于 java.util 包下，提供了一个表示和操作对象集合的统一构架，包含大量集合接口，以及这些接口的实现类和操作它们的算法。</p>
+<p>集合类和数组不一样，<strong>数组元素既可以是基本类型的值，也可以是对象（实际上保存的是对象的引用变量），而集合里只能保存对象</strong>（实际上只是保存对象的引用变量，但通常习惯上认为集合里保存的是对象）。</p>
+<p><strong>Java 集合类型分为 Collection 和 Map</strong>，它们是 Java 集合的根接口，这两个接口又包含了一些子接口或实现类。图 1 和图 2 分别为 Collection 和 Map 的子接口及其实现类。 </p>
+</blockquote>
+<p> Collection接口基本结构</p>
+<p><img src="/../img/Collection.png" alt=" Collection接口基本结构"></p>
+<p>Map接口基本结构</p>
+<p><img src="/../img/Map1.png" alt="Map接口基本结构"></p>
+<ul>
+<li>黄色块为集合的接口，蓝色块为集合的实现类。下表 介绍了这些接口的作用。</li>
+</ul>
+<h4 id="Collection与Map接口与各自实现类作用"><a href="#Collection与Map接口与各自实现类作用" class="headerlink" title="Collection与Map接口与各自实现类作用"></a>Collection与Map接口与各自实现类作用</h4><table>
+<thead>
+<tr>
+<th>接口名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Iterator 接口</td>
+<td>集合的输出接口，主要用于遍历输出（即迭代访问）Collection 集合中的元素，Iterator 对象被称之为迭代器。迭代器接口是集合接口的父接口，实现类实现 Collection 时就必须实现 Iterator 接口。</td>
+</tr>
+<tr>
+<td>Collection 接口</td>
+<td>是 List、Set 和 Queue 的父接口，是存放一组单值的最大接口。所谓的单值是指集合中的每个元素都是一个对象。一般很少直接使用此接口直接操作。</td>
+</tr>
+<tr>
+<td>Queue 接口</td>
+<td>Queue 是 Java 提供的队列实现，有点类似于 List。</td>
+</tr>
+<tr>
+<td>Dueue 接口</td>
+<td>是 Queue 的一个子接口，为双向队列。</td>
+</tr>
+<tr>
+<td>List 接口</td>
+<td>是最常用的接口。是有序集合，允许有相同的元素。使用 List 能够精确地控制每个元素插入的位置，用户能够使用索引（元素在 List 中的位置，类似于数组下标）来访问 List 中的元素，与数组类似。</td>
+</tr>
+<tr>
+<td>Set 接口</td>
+<td>不能包含重复的元素。</td>
+</tr>
+<tr>
+<td>Map 接口</td>
+<td>是存放一对值的最大接口，即接口中的每个元素都是一对，以 key→value 的形式保存。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>对于 Set、List、Queue 和 Map 这 4 种集合，Java 最常用的实现类分别是 HashSet、TreeSet、ArrayList、ArrayDueue、LinkedList 和 HashMap、TreeMap 等。下表介绍了集合中这些常用的实现类。</p>
+</blockquote>
+<p>Java集合实现类的作用</p>
+<table>
+<thead>
+<tr>
+<th>类名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HashSet</td>
+<td>为优化査询速度而设计的 Set。它是基于 HashMap 实现的，HashSet 底层使用 HashMap 来保存所有元素，实现比较简单</td>
+</tr>
+<tr>
+<td>TreeSet</td>
+<td>实现了 Set 接口，是一个有序的 Set，这样就能从 Set 里面提取一个有序序列</td>
+</tr>
+<tr>
+<td>ArrayList</td>
+<td>一个用数组实现的 List，能进行快速的随机访问，效率高而且实现了可变大小的数组</td>
+</tr>
+<tr>
+<td>ArrayDueue</td>
+<td>是一个基于数组实现的双端队列，按“先进先出”的方式操作集合元素</td>
+</tr>
+<tr>
+<td>LinkedList</td>
+<td>对顺序访问进行了优化，但随机访问的速度相对较慢。此外它还有 addFirst()、addLast()、getFirst()、getLast()、removeFirst() 和 removeLast() 等方法，能把它当成栈（Stack）或队列（Queue）来用</td>
+</tr>
+<tr>
+<td>HsahMap</td>
+<td>按哈希算法来存取键对象</td>
+</tr>
+<tr>
+<td>TreeMap</td>
+<td>可以对键对象进行排序</td>
+</tr>
+</tbody></table>
+<h4 id="Java-Collection接口详解"><a href="#Java-Collection接口详解" class="headerlink" title="Java Collection接口详解"></a>Java Collection接口详解</h4><blockquote>
+<p>Collection 接口是 List、Set 和 Queue 接口的父接口，通常情况下不被直接使用。Collection 接口定义了一些通用的方法，通过这些方法可以实现对集合的基本操作。定义的方法既可用于操作 Set 集合，也可用于操作 List 和 Queue 集合。</p>
+</blockquote>
+<p>Collection接口的常用方法</p>
+<table>
+<thead>
+<tr>
+<th>boolean add(E e)</th>
+<th>向集合中添加一个元素，如果集合对象被添加操作改变了，则返回 true。E 是元素的数据类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean addAll(Collection c)</td>
+<td>向集合中添加集合 c 中的所有元素，如果集合对象被添加操作改变了，则返回 true。</td>
+</tr>
+<tr>
+<td>void clear()</td>
+<td>清除集合中的所有元素，将集合长度变为 0。</td>
+</tr>
+<tr>
+<td>boolean contains(Object o)</td>
+<td>判断集合中是否存在指定元素</td>
+</tr>
+<tr>
+<td>boolean containsAll(Collection c)</td>
+<td>判断集合中是否包含集合 c 中的所有元素</td>
+</tr>
+<tr>
+<td>boolean isEmpty()</td>
+<td>判断集合是否为空</td>
+</tr>
+<tr>
+<td>Iterator<E>iterator()</td>
+<td>返回一个 Iterator 对象，用于遍历集合中的元素</td>
+</tr>
+<tr>
+<td>boolean remove(Object o)</td>
+<td>从集合中删除一个指定元素，当集合中包含了一个或多个元素 o 时，该方法只删除第一个符合条件的元素，该方法将返回 true。</td>
+</tr>
+<tr>
+<td>Object[] toArray()</td>
+<td>把集合转换为一个数组，所有的集合元素变成对应的数组元素。</td>
+</tr>
+<tr>
+<td>boolean retainAll(Collection c)</td>
+<td>从集合中删除<strong>集合 c 里不包含的元素</strong>（相当于把调用该方法的集合变成该集合和集合 c 的交集），如果该操作改变了调用该方法的集合，则该方法返回 true。</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>boolean removeAll(Collection c)</th>
+<th>从集合中删除所有在集合 c 中出现的元素（相当于把调用该方法的集合减去集合 c）。如果该操作改变了调用该方法的集合，则该方法返回 true。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>以上方法完全来自于 <a target="_blank" rel="noopener" href="http://c.biancheng.net/java/">Java</a> API 文档，读者可自行参考 API 文档</p>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a><strong>迭代器</strong></h4><blockquote>
+<p>java中提供了很多的集合类型,不同类型的集合存取方 式各不相同,所有的集合都可以通过迭代器来来从中获 取内容,其目的就是为了应对集合的遍历 </p>
+<p>迭代器本身是一个接口,我们需要获取其实现 类,Collection接口中提供了一个方法,可以获取迭代器实现类 </p>
+</blockquote>
+<p><strong>迭代器的原理</strong> </p>
+<blockquote>
+<p>当集合调用iterator()方法获取迭代器的时候,相当于集 合中就存在一个指针,指针指向的是­1位置,hasNext() 方法只判断是否有下一个元素,指针的位置不会发生改 变,next()方法是让指针向下走不能在迭代的过程中去修改集合</p>
+</blockquote>
+<p>List 实现了 Collection 接口，它主要有两个常用的实现类：ArrayList 类和 LinkedList 类。 </p>
+<h4 id="for-­each方法"><a href="#for-­each方法" class="headerlink" title="for-­each方法"></a><strong>for-­each</strong>方法</h4><blockquote>
+<p>for­each其内部就是迭代器的原理,实际是在jdk1.5以后推出的,凡是类实现了Iterable接口都可以使用for­-each方法进行遍历,我们所学的所有集合都实现了此接口,所以可以使用这种方法进行遍历 </p>
+</blockquote>
+<h3 id="List接口-1"><a href="#List接口-1" class="headerlink" title="List接口"></a><strong>List</strong>接口</h3><blockquote>
+<p>List接口的父接口是Collection接口,List接口的实现类 </p>
+<p>具有以下特性 </p>
+<p>​	1.有序(存储数序和读取顺序) </p>
+<p>​	2.有索引 </p>
+<p>​	3.能够存储重复元素</p>
+</blockquote>
+<h4 id="List集合存储数据的结构"><a href="#List集合存储数据的结构" class="headerlink" title="List集合存储数据的结构"></a><strong>List</strong>集合存储数据的结构</h4><ul>
+<li><p>栈结构</p>
+<ul>
+<li>特点:先进后出</li>
+</ul>
+</li>
+<li><p>队列结构 </p>
+<ul>
+<li>特点:先进先出</li>
+</ul>
+</li>
+<li><p>数组</p>
+<ul>
+<li><p>特点:1.内存地址连续 </p>
+</li>
+<li><p>特点:2.查找快,可以快速访问指定位置的元素 </p>
+</li>
+<li><p>特点:3.增删慢,需要创建一个新数组，将指定索引位置插入新元素存储或者删除元素,再把原数组元素根据索引,复制到新数组对应索引的位置。</p>
+</li>
+</ul>
+</li>
+<li><p>链表,分为数据域和指针域,数据域中放的是数据,指针域指的是前后节点的信息 </p>
+<ul>
+<li><p>特点:1.多个节点之间，通过地址进行连接 </p>
+</li>
+<li><p>特点:2查找元素慢：想查找某个元素，需要通过连接的节点，依次向后查找指定元素 </p>
+</li>
+<li><p>特点:3增删元素快</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="ArrayList-类"><a href="#ArrayList-类" class="headerlink" title="ArrayList 类"></a><strong>ArrayList 类</strong></h4><blockquote>
+<p>其结构是**数组,**初始化的数组长度是10,每次添加新的元素都会,进行长度的判断,当符合条件的时候进行数组的动态扩容,是线程不安全的 </p>
+</blockquote>
+<p>ArrayList 类实现了可变数组的大小，存储在内的数据称为元素。它还提供了快速基于索引访问元素的方式，对尾部成员的增加和删除支持较好。使用 ArrayList 创建的集合，允许对集合中的元素进行快速的随机访问，不过，向 ArrayList 中插入与删除元素的速度相对较慢。</p>
+<p>ArrayList 类的常用构造方法有<strong>如下两种重载形式</strong>： </p>
+<ul>
+<li>ArrayList()：构造一个初始容量为 10 的空列表。</li>
+<li>ArrayList(Collection&lt;?extends E&gt;c)：构造一个包含指定 Collection 元素的列表，这些元素是按照该 Collection 的迭代器返回它们的顺序排列的。</li>
+</ul>
+<blockquote>
+<p>通过内部原理可知,对于ArrayList的每次操作,当需要扩 </p>
+<p>容的时候,每次扩容为当前长度的1.5倍,,但是每次操作 </p>
+<p>集合都需要进行数组的拷贝,此过程消耗资源,所以如 </p>
+<p>果对于经常对集合进行添加删除操作的时候,不建议使 </p>
+<p>用ArrayList </p>
+</blockquote>
+<p>ArrayList类的常用方法</p>
+<p>​      参考api</p>
+<blockquote>
+<p>retainAll( ) 方法的作用与 removeAll( ) 方法相反，即保留两个集合中相同的元素，其他全部删除。</p>
+</blockquote>
+<h4 id="LinkedList类"><a href="#LinkedList类" class="headerlink" title="LinkedList类"></a><strong>LinkedList类</strong></h4><blockquote>
+<p>LinkedList集合数据存储的结构是<strong>双向链表</strong>结构。方便元素添加、删除的集合。实际开发中对一个集合元素的添加与删除经常涉及到首尾操作，而LinkedList提供了大量首尾操作的方法。 </p>
+</blockquote>
+<p>随机访问是指检索集合中特定索引位置的元素。</p>
+<blockquote>
+<p>通过内部原理可知,链表的添加删除元素比较快,不用经过数组的重复赋值过程,但是查找元素都要从第一个或者最后一个元素进行遍历查找,比较耗费时间</p>
+</blockquote>
+<p>LinkedList类中的方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void addFirst(E e)</td>
+<td>将指定元素添加到此集合的开头</td>
+</tr>
+<tr>
+<td>void addLast(E e)</td>
+<td>将指定元素添加到此集合的末尾</td>
+</tr>
+<tr>
+<td>E getFirst()</td>
+<td>返回此集合的第一个元素</td>
+</tr>
+<tr>
+<td>E getLast()</td>
+<td>返回此集合的最后一个元素</td>
+</tr>
+<tr>
+<td>E removeFirst()</td>
+<td>删除此集合中的第一个元素</td>
+</tr>
+<tr>
+<td>E removeLast()</td>
+<td>删除此集合中的最后一个元素</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>详细参考api</p>
+</blockquote>
+<h4 id="ArrayList-类和-LinkedList-类的区别"><a href="#ArrayList-类和-LinkedList-类的区别" class="headerlink" title="ArrayList 类和 LinkedList 类的区别"></a><strong>ArrayList 类和 LinkedList 类的区别</strong></h4><blockquote>
+<ul>
+<li><p>ArrayList 与 LinkedList 都是 List 接口的实现类，因此都实现了 List 的所有未实现的方法，只是实现的方式有所不同。</p>
+</li>
+<li><p>ArrayList 是基于动态数组数据结构的实现，访问元素速度优于 LinkedList。LinkedList 是基于链表数据结构的实现，占用的内存空间比较大，但在批量插入或删除数据时优于 ArrayList。</p>
+</li>
+<li><p>对于快速访问对象的需求，使用 ArrayList 实现执行效率上会比较好。需要频繁向集合中插入和删除元素时，使用 LinkedList 类比 ArrayList 类效果高。</p>
+</li>
+<li><p>不同的结构对应于不同的算法，有的考虑节省占用空间，有的考虑提高运行效率，对于程序员而言，它们就像是“熊掌”和“鱼肉”，不可兼得。高运行速度往往是以牺牲空间为代价的，而节省占用空间往往是以牺牲运行速度为代价的。</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="Set接口"><a href="#Set接口" class="headerlink" title="Set接口"></a><strong>Set</strong>接口</h3><p>Set 集合类似于一个罐子，程序可以依次把多个对象“丢进”Set 集合，而 Set 集合通常不能记住元素的添加顺序。也就是说 Set 集合中的对象不按特定的方式排序，只是简单地把对象加入集合。Set 集合中不能包含重复的对象，并且最多<strong>只允许包含一个 null 元素。</strong></p>
+<p>Set 实现了 Collection 接口，它主要有两个常用的实现类：HashSet 类和 TreeSet类。 </p>
+<p>Set接口的特点 </p>
+<blockquote>
+<pre><code>1. 不包含重复元素的集合
+ 2. set集合中是没有索引的 
+ 3. set接口的方法和Collection中的方法完全相同 
+</code></pre>
+</blockquote>
+<h4 id="HashSet-类"><a href="#HashSet-类" class="headerlink" title="HashSet 类"></a><strong>HashSet 类</strong></h4><p>此类实现Set接口,底层的数据结构hash表,此类的特点有</p>
+<blockquote>
+<ol>
+<li>无序的 </li>
+<li>不重复 </li>
+<li>底层是HashMap </li>
+<li>集合元素值可以是 null。</li>
+<li>HashSet 不是同步的，如果多个线程同时访问或修改一个 HashSet，则必须通过代码来保证其同步。</li>
+<li>当向 HashSet 集合中存入一个元素时，HashSet 会调用该对象的 hashCode() 方法来得到该对象的 hashCode 值，然后根据该 hashCode 值决定该对象在 HashSet 中的存储位置。如果有两个元素通过 equals() 方法比较返回的结果为 true，但它们的 hashCode 不相等，HashSet 将会把它们存储在不同的位置，依然可以添加成功。也就是说，<strong>两个对象的 hashCode 值相等且通过 equals() 方法比较返回结果为 true，则 HashSet 集合认为两个元素相等。</strong>在 HashSet 类中实现了 Collection 接口中的所有方法</li>
+<li>HashSet 类的常用构造方法重载形式如下。<br>HashSet()：构造一个新的空的 Set 集合。<br>HashSet(Collection&lt;? extends E&gt;c)：构造一个包含指定 Collection 集合元素的新 Set 集合。其中，“&lt; &gt;”中的 extends 表示 HashSet 的父类，即指明该 Set 集合中存放的集合元素类型。c 表示其中的元素将被存放在此 Set 集合中。</li>
+</ol>
+</blockquote>
+<p>HashSet 是 Set 接口的典型实现，大多数时候使用 Set 集合时就是使用这个实现类。HashSet 是按照 Hash 算法来存储集合中的元素。因此具有很好的存取和查找性能。</p>
+<p><strong>HashSet</strong>存储自定义对象</p>
+<ul>
+<li><p>重写hashcode方法 </p>
+</li>
+<li><p>重写equals方法</p>
+</li>
+</ul>
+<h4 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a><strong>LinkedHashSet</strong></h4><blockquote>
+<p>其存储结构和HashSet相同,和HashSet不同的是其是有序的 </p>
+</blockquote>
+<h4 id="TreeSet-类"><a href="#TreeSet-类" class="headerlink" title="TreeSet 类"></a><strong>TreeSet 类</strong></h4><blockquote>
+<ul>
+<li>是一种红黑树(特殊的二叉树)的结构,其内部是一个排好顺序的结构 </li>
+<li>二叉树的先序排序,中序排序,后序排序 </li>
+<li><strong>如果TreeSet放自定义对象,需要实现Comparable实现compareTo方法,方法的返回值为正数代表顺序,为负数代表逆序</strong></li>
+</ul>
+</blockquote>
+<h5 id="TreeSet重写Comparator比较器"><a href="#TreeSet重写Comparator比较器" class="headerlink" title="TreeSet重写Comparator比较器"></a><strong>TreeSet重写Comparator比较器</strong></h5><ol>
+<li><p>比较器有两种，内部比较器和外部比较器；</p>
+</li>
+<li><p>内部比较器：定义在要比较的类元素中。</p>
+<ul>
+<li>接口：Comparable</li>
+<li>方法：compareTo(Object o)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.TreeSet;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;Student&gt; &#123;<span class="comment">//不要选择java.util.Comparator</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> score;</span><br><span class="line"> 	</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getScore</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> score;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setScore</span><span class="params">(<span class="type">int</span> score)</span> 	&#123;</span><br><span class="line">        <span class="built_in">this</span>.score = score;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(Student o)</span> 	&#123;<span class="comment">//重写compareTo</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.getScore()-o.getScore();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>外部比较器：定义在新建的TreeSet集合的构造函数中。</p>
+<ul>
+<li><p>接口：Comparator<T></p>
+</li>
+<li><p>方法：compare(T o1, T o2)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TreeSet&lt;Student&gt; treeSet = <span class="keyword">new</span> <span class="title class_">TreeSet</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;Student&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Student o1, Student o2)</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> o1.getScore()-o2.getScore();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>当同时有内部比较器和外部比较器时，外部比较器起作用。</p>
+</li>
+<li><p>推荐使用外部比较器；</p>
+<ul>
+<li><p>内部比较器只有在存储当前那对象的时候才可以使用；</p>
+</li>
+<li><p>外部比较器可以定义为一个工具类，此时所有需要比较的规则如果一致的话，可以复用。</p>
+</li>
+</ul>
+</li>
+<li><p>基本数据类型，不需要定义比较器；</p>
+<ul>
+<li>只有当以树作为存储结构时，而且添加的是引用对象时，才需要定义比较器。</li>
+<li>此篇文章举例用TreeSet，TreeSet用TreeMap实现，TreeMap用红黑树实现。而且添加的是自定义的类，所以需要定义比较器。</li>
+<li>如果添加的是基本数据类型，不需要定义比较器。</li>
+</ul>
+</li>
+</ol>
+<p>TreeSet 类同时实现了 Set 接口和 SortedSet 接口。SortedSet 接口是 Set 接口的子接口，可以实现对集合进行自然排序，因此使用 TreeSet 类实现的 Set 接口默认情况下是自然排序的，这里的自然排序指的是升序排序。</p>
+<h3 id="Map接口-1"><a href="#Map接口-1" class="headerlink" title="Map接口"></a><strong>Map</strong>接口</h3><blockquote>
+<p>Map接口和Collection接口没有任何关系,Map中存放 的是键值对,键和值都是Object,使用的时候注意键的唯一不重复的特性</p>
+<p>Map中常用的实现类为 </p>
+<p>HashMap,LinkedHashMap,TreeMap</p>
+</blockquote>
+<h4 id="Map集合的遍历"><a href="#Map集合的遍历" class="headerlink" title="Map集合的遍历"></a><strong>Map</strong>集合的遍历</h4><blockquote>
+<ul>
+<li><p>通过keySet集合遍历,通过map调用keySet方法进行遍历</p>
+</li>
+<li><p>通过Map中的关系对象 Entry 进行遍历, Entry 是定义在Map中的内部类,表示键值对关系的对象,通过entry的getKey() 方法获取对应关系中的键,通过entry的 getValue() 获取对应关系的值</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="HashMap存储自定义键"><a href="#HashMap存储自定义键" class="headerlink" title="HashMap存储自定义键"></a><strong>HashMap</strong>存储自定义键</h4><blockquote>
+<p>需要定自定义的键的时候,需要重写hashcode和equeals方法 </p>
+</blockquote>
+<h4 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a><strong>LinkedHashMap</strong></h4><blockquote>
+<p>和LinkedHashSet相同,存放的顺序和读取的顺序一致</p>
+</blockquote>
+<h4 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a><strong>TreeMap</strong></h4><blockquote>
+<p>本质是红黑树,会对key进行默认排序,如果自定义的key,需要实现compareable接口重写compareTo方法 </p>
+</blockquote>
+<h3 id="Collections-不是Collection-工具类"><a href="#Collections-不是Collection-工具类" class="headerlink" title="Collections(不是Collection)工具类"></a><strong>Collections</strong>(不是Collection)工具类</h3><blockquote>
+<p>更多请参考api</p>
+</blockquote>
+<h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a><strong>排序</strong></h4><ul>
+<li>通过调用 Collections.sort() 方法进行排序,默认使用的字符串的ASCII进行排列</li>
+</ul>
+<p>对于自定义类型排序有两种方式 </p>
+<ol>
+<li><p>对于类实现接口Comparable</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(Person o)</span> &#123; </span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">this</span>.age - o.age; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>调用方法,创建比较器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(li, <span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;Car&gt; () &#123; </span><br><span class="line">    <span class="meta">@Override</span> </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Car o1, Ca r o2)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> o1.getPrice() - o <span class="number">2.</span>getPrice();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="shuffle随机排序"><a href="#shuffle随机排序" class="headerlink" title="shuffle随机排序"></a><strong>shuffle</strong>随机排序</h4><blockquote>
+<p>通过调用 Collections.shuffle(li); 进行随机排序 </p>
+</blockquote>
+<h4 id="binarySearch折半查找"><a href="#binarySearch折半查找" class="headerlink" title="binarySearch折半查找"></a><strong>binarySearch</strong>折半查找</h4><blockquote>
+<p>通过调用 int search &#x3D; Collections.binarySearch(li, “rsaaw”); </p>
+</blockquote>
+<h4 id="reverse顺序反转"><a href="#reverse顺序反转" class="headerlink" title="reverse顺序反转"></a><strong>reverse</strong>顺序反转</h4><blockquote>
+<p>通过调用 Collections.reverse(li); 将集合中的元素反向排列</p>
+</blockquote>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><h4 id="hashmap和hashset的区别和联系"><a href="#hashmap和hashset的区别和联系" class="headerlink" title="hashmap和hashset的区别和联系"></a>hashmap和hashset的区别和联系</h4><p><strong>hashset</strong></p>
+<p>通过查看hashset的add方法源码可以发现hashset采用的是map存储结构</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">add</span><span class="params">(E e)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> map.put(e, PRESENT)==<span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Object</span> <span class="variable">PRESENT</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><p>hashset则将对象存储在map的key中，value值用一个new Object()作为填充</p>
+</li>
+<li><p>往hashset存储元素时，hashset会先调用元素的hashcode方法获取元素的hash值，再用元素的hash值和（数组长度-1）做位运算得到下标</p>
+</li>
+<li><p>HashMap的底层是一个数组结构，数组中的每一项对应了一个链表（jdk1.8之后是红黑树），这种结构称“链表散列”的数据结构，即数组和链表的结合体；也叫散列表、哈希表。</p>
+</li>
+<li><p>如果此时计算的位置上没有其他元素则直接插入不用比较。</p>
+</li>
+<li><p>但是随着元素的不断添加，就可能会出现“哈希冲突”，不同的对象计算出的hashcode是相同的。这时候就需要用equals方法进行比较，如果相同则不插入，如果不同则用头插法插入链表。但是<strong>若相同元素过多</strong>同样会产生链表过长查找慢的问题，在1.8之后就采用了红黑树结构。</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>hashmap</strong></p>
+<blockquote>
+<p>一、HahMap存储对象的过程如下</p>
+<ol>
+<li><p>对HahMap的Key调用hashCode()方法，返回int值，即对应的hashCode；</p>
+</li>
+<li><p>把此hashCode作为哈希表的索引，查找哈希表的相应位置，若当前位置内容为NULL，则把hashMap的Key、Value包装成Entry数组，放入当前位置；</p>
+</li>
+<li><p>若当前位置内容不为空，则继续查找当前索引处存放的链表，利用equals方法，找到Key相同的Entry数组，则用当前Value去替换旧的Value；</p>
+</li>
+<li><p>若未找到与当前Key值相同的对象，则把当前位置的链表后移（Entry数组持有一个指向下一个元素的引用），把新的Entry数组放到链表表头；</p>
+</li>
+</ol>
+</blockquote>
+<p>HashSet和HashMap的区别</p>
+<p><img src="/../img/HashSet&HashMap.png" alt="HashSet&amp;HashMap.png"></p>
+<p>hashset为什么比hashmap慢呢？</p>
+<blockquote>
+<p>有的说是因为HashMap可以直接通过hash计算得到的键来获取对象，而HashSet呢， 直接用HashMap的containKeys方法，确实能在相同效率下确定一个元素是否存在，但是因为实现的是set，并不能用get方法，因此取值很麻烦。但是总感觉牵强。</p>
+<p>因此就想会不会是因为键值对像的差别造成的，他们俩都必须计算哈希码，但要考虑HashMap的键的性质-它通常是一个简单的String甚至是一个数字。他们俩都必须计算哈希码，而hashset可能会是一个对象。如果HashMap的键与存储在HashSet中的键是相同的对象，则性能将没有真正的区别。区别在于HashMap的键是哪种对象。</p>
+</blockquote>
+<h1 id="Day57-IO"><a href="#Day57-IO" class="headerlink" title="Day57(IO)"></a>Day57(IO)</h1><blockquote>
+<p>Day57(IO)</p>
+<p>IO(Input&amp;Output)</p>
+<p>File类</p>
+<p>路径问题</p>
+<p>构造方法</p>
+<p>创建删除目录和文件</p>
+<p>File的获取功能</p>
+<p>File判断功能</p>
+<p>遍历目录</p>
+<p>文件过滤器</p>
+<p>文件过滤原理</p>
+<p>输出流和输入流</p>
+<p>OutputStream</p>
+<p>FileOutputStream</p>
+<p>写入流程</p>
+<p>写入方式</p>
+<p>InputStream</p>
+<p>FileInputStream</p>
+<p>构造方法</p>
+<p>读取方式</p>
+</blockquote>
+<h2 id="IO-Input-amp-Output"><a href="#IO-Input-amp-Output" class="headerlink" title="IO(Input&amp;Output)"></a>IO(Input&amp;Output)</h2><blockquote>
+<p>当需要把内存中的数据存储到持久化设备上这个动作 称为输出（写）Output操作。 </p>
+<p>当把持久设备上的数据读取到内存中的这个动作称为输入（读）Input操作。 </p>
+</blockquote>
+<h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a><strong>File</strong>类</h2><blockquote>
+<p>当我们要操作系统的<strong>文件和文件夹</strong>的时候就需要使用 java.io包中的File类 </p>
+</blockquote>
+<h2 id="路径问题"><a href="#路径问题" class="headerlink" title="路径问题"></a><strong>路径问题</strong></h2><blockquote>
+<ul>
+<li>在windows中的路径的分隔符 \ </li>
+<li>使用java代码写的时候,因为 \ 就是转义字符,所以应该写成 \ \也可一写成 &#x2F; </li>
+<li>在linux中的路径的分隔符是 &#x2F;</li>
+</ul>
+</blockquote>
+<h2 id="File常见属性"><a href="#File常见属性" class="headerlink" title="File常见属性"></a>File常见属性</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pathSeparator:Windows中等同于\;Linux中\:</span><br><span class="line">Separator:Windows中等同于\\</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a><strong>构造方法</strong></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">File(String parent, String child)</span><br><span class="line">File(String pathname)</span><br><span class="line">File(URI uri)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;e:\\test\\2.txt&quot;</span>); System.out.println(file); </span><br><span class="line"><span class="type">File</span> <span class="variable">file2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;e:\\test&quot;</span>,<span class="string">&quot;2.txt&quot;</span>); </span><br><span class="line">System.out.println(file2); </span><br><span class="line"><span class="type">File</span> <span class="variable">file3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;e:\\test&quot;</span>); </span><br><span class="line"><span class="type">File</span> <span class="variable">file4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(file3,<span class="string">&quot;2.txt&quot;</span>); System.out.println(file4);</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建删除目录和文件"><a href="#创建删除目录和文件" class="headerlink" title="创建删除目录和文件"></a><strong>创建删除目录和文件</strong></h2><ul>
+<li><p>创建文件功能 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;e:\\test\\2.txt&quot;</span>);</span><br><span class="line"><span class="type">boolean</span> <span class="variable">orSuccess</span> <span class="operator">=</span> file.createNewFile();</span><br><span class="line">System.out.println(orSuccess);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>创建过程中如果没有中间目录,系统会报错 </p>
+</li>
+<li><p>如果文件已经存在了,那么调用方法后的返回值是 false </p>
+</li>
+<li><p>如果文件已经存在了,那么调用方法后的返回值是 false </p>
+</li>
+<li><p>如果不指定后缀名默认还是创建的文件,不会创建 </p>
+</li>
+<li><p>文件夹 对于路径也可以写为 e:&#x2F;test&#x2F;2.txt</p>
+</li>
+</ul>
+</li>
+<li><p>创建文件夹功能</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;e:\\test&quot;</span>);</span><br><span class="line"><span class="type">boolean</span> <span class="variable">orSuccess</span> <span class="operator">=</span> file.mkdir();</span><br><span class="line">System.out.println(orSuccess);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>只能创建1级文件夹,多级目录会报错 </li>
+<li>如果要创建多层级目录需要使用 file.mkdirs();</li>
+</ul>
+</li>
+<li><p>删除文件或者文件夹</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;e:\\test&quot;</span>);</span><br><span class="line"><span class="type">boolean</span> <span class="variable">orSuccess</span> <span class="operator">=</span> file.createNewFile();</span><br><span class="line">System.out.println(orSuccess);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果有中间目录删除会失败</li>
+<li>删除不会放进回收站</li>
+</ul>
+</li>
+</ul>
+<h2 id="File的获取功能"><a href="#File的获取功能" class="headerlink" title="File的获取功能"></a><strong>File</strong>的获取功能</h2><ul>
+<li><p>file.getName() 通过路径的 split(“&#x2F;“) 数组的最后 </p>
+<p>一个元素</p>
+</li>
+<li><p>file.getPath() 得到创建file的路径,创建file时的路 </p>
+<p>径是什么得到的就是什么 </p>
+</li>
+<li><p>file.getAbsolutePath() 获取绝对路径,如果是file </p>
+<p>中的路径是相对路径,得到的是相对于当前项目的绝对路径</p>
+</li>
+<li><p>file.getAbsoluteFile() 返回的是文件</p>
+</li>
+<li><p>file.length() 获取的是文件的字节数,long类型 </p>
+</li>
+<li><p>file.getParent() 得到的是父目录,返回值是String </p>
+<p>类型</p>
+</li>
+<li><p>file.getParentFile() 得到的是父目录,返回值是 </p>
+<p>file类型</p>
+</li>
+</ul>
+<h2 id="File判断功能"><a href="#File判断功能" class="headerlink" title="File判断功能"></a><strong>File</strong>判断功能</h2><ul>
+<li><p>判断路径是否存在:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;e:\\test\\test.txt&quot;</span>);</span><br><span class="line"><span class="type">boolean</span> <span class="variable">orSuccess</span> <span class="operator">=</span> file.exists();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断是不是文件夹:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;e:\\test&quot;</span>);</span><br><span class="line"><span class="type">boolean</span> <span class="variable">exists</span> <span class="operator">=</span> file.isDirectory();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断是否是文件:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;e:\\test\\test.txt&quot;</span>);</span><br><span class="line"> <span class="type">boolean</span> <span class="variable">exists</span> <span class="operator">=</span> file.isFile();</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="遍历目录"><a href="#遍历目录" class="headerlink" title="遍历目录"></a><strong>遍历目录</strong></h2><ul>
+<li><p>遍历目录 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;d:/Develop/eclipse&quot;</span>);</span><br><span class="line">String[] list = file.list(); </span><br></pre></td></tr></table></figure>
+
+<p>返回值是字符串数组 </p>
+</li>
+<li><p>遍历目录 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;d:/Develop/eclipse&quot;</span>);</span><br><span class="line">File[] listFiles = file.listFiles();</span><br></pre></td></tr></table></figure>
+
+<p>返回值File数组 </p>
+</li>
+<li><p>获取磁盘根目录 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File[] listRoots = File.listRoots(); </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="文件过滤器"><a href="#文件过滤器" class="headerlink" title="文件过滤器"></a><strong>文件过滤器</strong></h2><blockquote>
+<p>通过设置可以获取指定类型的文件</p>
+</blockquote>
+<ul>
+<li><p>通过调用 file.listFiles(new FileFilter() {}); </p>
+<p>创建一个FileFilter的文件过滤器</p>
+</li>
+<li><p>重写抽象方法,当方法返回值是true的时候,添加进数组, 实现文件过滤的功能</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">accept</span><span class="params">(File pathname)</span> &#123; 		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="文件过滤原理"><a href="#文件过滤原理" class="headerlink" title="文件过滤原理"></a><strong>文件过滤原理</strong></h3><ul>
+<li><p>file.listFiles() 每次获取到一个文件或者文件夹 </p>
+<p>的时候,就会调用对应接口的 accept 方法,将得到的这 个文件或者文件夹作为参数进行传递 </p>
+</li>
+<li><p>accept() 方法如果返回值是true,就将此文件或者文件夹放入对应的数组中,所以我们可以用我们的代码进行控制返回值是 true 还是 false</p>
+</li>
+</ul>
+<p><img src="/../img/listFile.png" alt="listFile.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;C:\\temp&quot;</span>);</span><br><span class="line">        File [] listFiles = file.listFiles(<span class="keyword">new</span> <span class="title class_">FileFilter</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">accept</span><span class="params">(File pathname)</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (File e:listFiles) &#123;</span><br><span class="line">            System.out.println(e);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;C:\\temp&quot;</span>);</span><br><span class="line">        File [] listFiles = file.listFiles(<span class="keyword">new</span> <span class="title class_">FileFilter</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">accept</span><span class="params">(File pathname)</span> &#123;</span><br><span class="line">                <span class="type">boolean</span> <span class="variable">bool</span> <span class="operator">=</span> pathname.getName().endsWith(<span class="string">&quot;.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> bool;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">for</span> (File e:listFiles</span><br><span class="line">             ) &#123;</span><br><span class="line">            System.out.println(e);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="输出流和输入流"><a href="#输出流和输入流" class="headerlink" title="输出流和输入流"></a><strong>输出流和输入流</strong></h1><blockquote>
+<p>输出流和输入流是相对于我们的程序而言的,</p>
+<p>当我们向 磁盘中写入文件的时候,对于我们的程序而言,需要将 数据从程序写出并写入文件,所以这种流叫做输出流, </p>
+<p>当我们程序需要读取某个文件的时候,就需要将磁盘中的文件读入的程序中,这种流称作为输入流 </p>
+</blockquote>
+<h2 id="OutputStream"><a href="#OutputStream" class="headerlink" title="OutputStream"></a><strong>OutputStream</strong></h2><blockquote>
+<p>OutputStream叫做字节输出流,</p>
+<p>每次操作的是1个字节 (8位),因为计算机中最小的存储单位是字节,所以 OutputStream可以写入任何文件 </p>
+<p>OutputStream是抽象类，是表示输出字节流的所有类的超类。操作的数据都是字节，定义了输出字节流的基本共性功能方法。</p>
+</blockquote>
+<p><img src="/../img/OutputStream.png" alt="OutputStream.png"></p>
+<ul>
+<li><p>write(int b) 写入一个字节 </p>
+</li>
+<li><p>write(byte[] b) 写入字节数组 </p>
+</li>
+<li><p>write(byte[] b, int off, int len) 写入字节数组b,off表示从数组中哪个索引开始写,写多少个长度 </p>
+</li>
+<li><p>close() 关闭对象释放相应资源,有时如果不写close就会造成文件一直被占用无法删除</p>
+</li>
+</ul>
+<h2 id="FileOutputStream"><a href="#FileOutputStream" class="headerlink" title="FileOutputStream"></a><strong>FileOutputStream</strong></h2><blockquote>
+<p>FileOutputStream类,即文件输出流,是用于将数据写入File的输出流</p>
+</blockquote>
+<h3 id="写入流程"><a href="#写入流程" class="headerlink" title="写入流程"></a><strong>写入流程</strong></h3><ul>
+<li><p>创建FileOutputStream指定输出地址</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">FileOutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;C:\\temp\\a.txt&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>此代码还可以帮助我们创建一个文件 </p>
+</li>
+<li><p>如果路径中含有中间目录是无法写成功的 </p>
+</li>
+<li><p>fos.write(100); 将100转换为2进制写入文件,会参照 </p>
+<p>对应ASCII码表 </p>
+</li>
+<li><p>关闭输出流 fos.close()</p>
+</li>
+</ul>
+<h3 id="写入方式"><a href="#写入方式" class="headerlink" title="写入方式"></a><strong>写入方式</strong></h3><ul>
+<li><p>写入一个字节 fos.write(100); </p>
+</li>
+<li><p>写入一个字节数组 byte[] bytes &#x3D; </p>
+<p>{65,66,67};fos.write(bytes); </p>
+</li>
+<li><p>写入一个字节数组中的一部分 byte[] bytes &#x3D; {65,66,67};fos.write(bytes,0,2); </p>
+</li>
+<li><p>如果要写入一个字符串,可以通过字符串<strong>调用</strong> “<strong>大家 好”.getBytes() 方式将字符串转换为一个字节数组的方式</strong>**</p>
+</li>
+<li><p>如果需要多次写入并且进行换行操作的话,需要添 加 \r\n ,因为在windows中默认的换行符 \r\n </p>
+</li>
+<li><p>如果需要每次写入内容是在当前文件的**末尾添加,而不是进行覆盖,**就需要创建FileOutputStream的时候使用 </p>
+<p>FileOutputStream fos &#x3D; new FileOutputStream(“d:&#x2F;a.txt”,true); </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">   <span class="type">FileOutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;C:\\temp\\temp.txt&quot;</span>);</span><br><span class="line">   <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> sc.next();</span><br><span class="line">   fos.write(str.getBytes());</span><br><span class="line">   sc.close();</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="InputStream"><a href="#InputStream" class="headerlink" title="InputStream"></a><strong>InputStream</strong></h2><blockquote>
+<p>InputStream叫做字节输入流,每次操作的是1个字节(8位),因为计算机中最小的存储单位是字节,所以InputStream可以读取任何文件 InputStream此抽象类,是表示输入字节流的所有类的超类。操作的数据都是字节，定义了读取字节流的基本共性功能方法。</p>
+</blockquote>
+<ul>
+<li><p>int read() :读取一个字节并返回，没有字节返回­1. </p>
+</li>
+<li><p>int read(byte[]) : 读取一定量的字节数，并存储到 </p>
+<p>字节数组中，返回读取到的字节数</p>
+</li>
+<li><p>void close() :关闭输入流</p>
+</li>
+</ul>
+<h2 id="FileInputStream"><a href="#FileInputStream" class="headerlink" title="FileInputStream"></a><strong>FileInputStream</strong></h2><blockquote>
+<p>FileInputStream类,即文件输入流,是用于将数据读取到程序的输入流。 </p>
+</blockquote>
+<h2 id="构造方法-1"><a href="#构造方法-1" class="headerlink" title="构造方法"></a><strong>构造方法</strong></h2><ul>
+<li><p>FileInputStream(File file)</p>
+<p>通过打开与实际文件的连接创建一个 <code>FileInputStream</code> ，该文件由文件系统中的 <code>File</code>对象  <code>file</code>命名</p>
+</li>
+<li><p><code>FileInputStream(FileDescriptor fdObj)</code> </p>
+<p>创建 <code>FileInputStream</code>通过使用文件描述符 <code>fdObj</code>  ，其表示在文件系统中的现有连接到一个实际的文件。</p>
+</li>
+<li><p><code>FileInputStream(String name)</code></p>
+<p>通过打开与实际文件的连接来创建一个 <code>FileInputStream</code> ，该文件由文件系统中的路径名  <code>name</code>命名</p>
+</li>
+</ul>
+<h3 id="读取方式"><a href="#读取方式" class="headerlink" title="读取方式"></a><strong>读取方式</strong></h3><h4 id="读取单个字节"><a href="#读取单个字节" class="headerlink" title="读取单个字节"></a>读取单个字节</h4><blockquote>
+<p>read的返回值代表读取的内容文件末尾的值为­1 </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;C:\\temp\\temp.txt&quot;</span>);</span><br><span class="line">   <span class="type">FileInputStream</span> <span class="variable">fileInputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(file);</span><br><span class="line">   <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">   <span class="keyword">while</span>((len = fileInputStream.read())!=-<span class="number">1</span>)&#123;</span><br><span class="line">       System.out.print((<span class="type">char</span>)len);</span><br><span class="line">   &#125;</span><br><span class="line">   fileInputStream.close();</span><br></pre></td></tr></table></figure>
+
+<h4 id="读取到字节数组"><a href="#读取到字节数组" class="headerlink" title="读取到字节数组"></a>读取到字节数组</h4><blockquote>
+<p>read的返回值代表读取到了多少个有效字节 </p>
+<p>读取的内容放在byte中</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;d:\\a.txt&quot;</span>); </span><br><span class="line"><span class="type">FileInputStream</span> <span class="variable">fis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(file); </span><br><span class="line"><span class="type">byte</span> [] b = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">2</span>]; </span><br><span class="line"><span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>; </span><br><span class="line"><span class="keyword">while</span>((len = fis.read(b)) != -<span class="number">1</span>)&#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(b, <span class="number">0</span>, len);</span><br><span class="line">    <span class="comment">//System.out.println(len+&quot; &quot;+new String(b,0,len));</span></span><br><span class="line">    System.out.print(str); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Day58-IO-propeties-序列化-逆向工程"><a href="#Day58-IO-propeties-序列化-逆向工程" class="headerlink" title="**Day58(IO+propeties+序列化+**逆向工程)"></a>**Day58(IO+propeties+<strong><strong>序列化</strong></strong>+**<strong>逆向工程</strong>)</h1><blockquote>
+<p>Day58(IO+propeties+序列化+逆向工程) </p>
+<p>字符流</p>
+<p>Writer </p>
+<p>FileWriter </p>
+<p>构造方法 </p>
+<p>操作方法 </p>
+<p>Reader </p>
+<p>FileReader </p>
+<p>构造方法 </p>
+<p>操作方法 </p>
+<p>转换流</p>
+<p>OutputStreamWriter </p>
+<p>IntputStreamWriter </p>
+<p>缓冲流</p>
+<p>BufferedOutputStream </p>
+<p>BufferedInputStream </p>
+<p>BufferedWriter </p>
+<p>BufferedReader </p>
+<p>使用字符缓冲流复制文件 </p>
+<p>作业三国演义分章节 </p>
+<p>Properties </p>
+<p>常用方法 </p>
+<p>注意点 </p>
+<p>对象序列化与反序列化 </p>
+<p>序列化 </p>
+<p>反序列化 </p>
+<p>transient </p>
+<p>Serializable </p>
+<p>serialVersionUID </p>
+<p>Commons­io </p>
+<p>FilenameUtils工具类 </p>
+<p>FileUtils工具类 </p>
+<p>hibernate逆向工程(高南南整理)安装JBoss Tools插件 </p>
+<p>使用JBoss Tools插件, 逆向生成hibernate文件 </p>
+</blockquote>
+<h2 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a><strong>字符流</strong></h2><blockquote>
+<p>字符流操作的单位是以字符为单位,其主要是为了解决文本文件的输入和输出. </p>
+</blockquote>
+<h3 id="Writer"><a href="#Writer" class="headerlink" title="Writer"></a><strong>Writer</strong></h3><blockquote>
+<p>字符输出流,和字节流的主要区别在于,字符流<strong>只能操作文本文件</strong>和OutputStream相同Writer也是抽象类 </p>
+</blockquote>
+<p>构造方法</p>
+<table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Constructor and Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>protected</td>
+<td><code>Writer()</code>  创建一个新的人物流作家，其关键部分将在作者本身上同步。</td>
+</tr>
+<tr>
+<td>protected</td>
+<td><code>Writer(Object lock)</code>  创建一个新的字符流写入器，其关键部分将在给定对象上进行同步。</td>
+</tr>
+</tbody></table>
+<p>方法摘要</p>
+<p>​		参考api</p>
+<h4 id="FileWriter"><a href="#FileWriter" class="headerlink" title="FileWriter"></a><strong>FileWriter</strong></h4><blockquote>
+<p>Writer的<strong>实现类</strong> </p>
+</blockquote>
+<p>构造方法</p>
+<blockquote>
+<p>构造方法和OutputStream相似</p>
+</blockquote>
+<p><img src="/../img/fileWriter.png" alt="fileWriter.png"></p>
+<p><strong>操作方法</strong></p>
+<ul>
+<li>注意对于字符流,如果不使用 flush() 数据是在内存中,不会被写入文件,为了节省内存空间,建议每写一次的时候都调用 flush() </li>
+<li>调用 close() 方法的时候会调用flush</li>
+</ul>
+<h3 id="Reader"><a href="#Reader" class="headerlink" title="Reader"></a><strong>Reader</strong></h3><blockquote>
+<p>字符输入流,和字节流的区别在于,字符流只能操作文本文件和InputStream相同Reader也是一个<strong>抽象类</strong> </p>
+</blockquote>
+<h4 id="FileReader"><a href="#FileReader" class="headerlink" title="FileReader"></a><strong>FileReader</strong></h4><p><strong>构造方法</strong> </p>
+<p><img src="/../img/fileReader.png" alt="fileReader.png"></p>
+<p><strong>操作方法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test03</span><span class="params">()</span> <span class="keyword">throws</span> IOException&#123; </span><br><span class="line">    <span class="type">FileReader</span> <span class="variable">fr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;d:/test.txt&quot;</span>); </span><br><span class="line">    <span class="type">FileWriter</span> <span class="variable">fw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;d:/newtest.txt&quot;</span>); </span><br><span class="line">    <span class="type">char</span> [] ch = <span class="keyword">new</span> <span class="title class_">char</span>[<span class="number">1024</span>]; <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>; </span><br><span class="line">    <span class="keyword">while</span>((len = fr.read(ch)) != -<span class="number">1</span>)&#123; </span><br><span class="line">        fw.write(ch, <span class="number">0</span>, len); </span><br><span class="line">    &#125;</span><br><span class="line">    fr.close(); </span><br><span class="line">    fw.close(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a><strong>转换流</strong></h2><blockquote>
+<p>正常情况下,当我们将eclipe的开发环境设置为UTF­8的时候,那么当我们使用字节流或者字符流进行写文件的时候,文件的编码格式就是UTF­8</p>
+<p>如果使用字节流或者字符流进行文件的读取的操作的时候,默认的格式也是UTF­8, </p>
+<p>如果文件是GBK的话,就会出现乱码现象 </p>
+<p>转换流的出现是为了解决写入和读取文本文件的时候指定具体的编码格式 </p>
+</blockquote>
+<h3 id="OutputStreamWriter"><a href="#OutputStreamWriter" class="headerlink" title="OutputStreamWriter"></a><strong>OutputStreamWriter</strong></h3><blockquote>
+<p>OutputStreamWriter 是<strong>字符流通向字节流</strong>的桥梁：可使用指定的字符编码表，将要写入流中的<strong>字符编码成字节</strong>。</p>
+</blockquote>
+<p><img src="/../img/OutputStreamWriter.png" alt="OutputStreamWriter"></p>
+<ul>
+<li><p>创建一个字节输出流 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">FileOutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;d:/gbk.txt&quot;</span>); </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建转换输出流,绑定指定的字节输出流,并指定编码格式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">OutputStreamWriter</span> <span class="variable">osw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(fos,<span class="string">&quot;gbk&quot;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用write方法写入 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">osw.write(<span class="string">&quot;你好&quot;</span>); </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="IntputStreamWriter"><a href="#IntputStreamWriter" class="headerlink" title="IntputStreamWriter"></a><strong>IntputStreamWriter</strong></h3><blockquote>
+<p>InputStreamReader 是<strong>字节流通向字符流</strong>的桥梁：它使用指定的字符编码表读取字节并将其解码为字符。 </p>
+</blockquote>
+<ul>
+<li><p>创建一个字节输入流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">FileInputStream</span> <span class="variable">fis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;d:/gbk-1.txt&quot;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建转换输入流,绑定字节输入流,并指定编码格式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">InputStreamReader</span> <span class="variable">isr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(fis, <span class="string">&quot;utf-8&quot;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用read方法进行读取</p>
+</li>
+</ul>
+<h2 id="缓冲流"><a href="#缓冲流" class="headerlink" title="缓冲流"></a><strong>缓冲流</strong></h2><blockquote>
+<p>在我们学习字节流与字符流的时候，大家都进行过读取文件中数据的操作，读取数据量大的文件时，读取的速度会很慢，很影响我们程序的效率.</p>
+<p>Java中提高了一套缓冲流，它的存在，可提高IO流的读写速度 .</p>
+<p>缓冲流的原理是当程序写入文件的时候,先把数据写入虚拟机的缓冲区,写够一定数量之后,再由虚拟机给操作系统,从而提高效率 .</p>
+<p>它们的内部都包含了一个缓冲区，通过缓冲区读写，就可以提高了IO流的读写速度 </p>
+</blockquote>
+<h3 id="BufferedOutputStream"><a href="#BufferedOutputStream" class="headerlink" title="BufferedOutputStream"></a><strong>BufferedOutputStream</strong></h3><blockquote>
+<p>原理就是给指定的字节流添加一个缓冲区</p>
+</blockquote>
+<ul>
+<li><p>创建字节输出流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">FileOutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;d:/oo.txt&quot;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建缓冲字节输出对象绑定字节输出流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BufferedOutputStream</span> <span class="variable">bos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedOutputStream</span>(fos);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用写的方法进行写入文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bos.write(<span class="number">48</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="BufferedInputStream"><a href="#BufferedInputStream" class="headerlink" title="BufferedInputStream"></a><strong>BufferedInputStream</strong></h3><blockquote>
+<p>原理就是给指定的字节输入流添加一个缓冲区</p>
+</blockquote>
+<ul>
+<li><p>创建字节输入流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">FileInputStream</span> <span class="variable">fis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;d:/oo.txt&quot;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建缓冲字节输入流绑定字节输入流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BufferedInputStream</span> <span class="variable">bis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedInputStream</span>(fis);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="BufferedWriter"><a href="#BufferedWriter" class="headerlink" title="BufferedWriter"></a><strong>BufferedWriter</strong></h3><blockquote>
+<p>原理就是给指定的字符输出流添加一个缓冲区 </p>
+</blockquote>
+<ul>
+<li><p>创建字符输出流 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">FileWriter</span> <span class="variable">fileOut</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;d:/oo.txt&quot;</span>); </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建缓冲字符输出流绑定字符输出流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BufferedWriter</span> <span class="variable">out</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(fileOut);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>此类为我们添加了一个换行的方法 <code>out.newLine();</code> ,此方法具有平台无关性</p>
+</li>
+</ul>
+<h3 id="BufferedReader"><a href="#BufferedReader" class="headerlink" title="BufferedReader"></a><strong>BufferedReader</strong></h3><blockquote>
+<p>原理就是给指定的字符输入流添加一个缓冲区</p>
+</blockquote>
+<ul>
+<li><p>创建缓冲字符输入流绑定字符输入流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BufferedReader</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;d:/oo.txt&quot;</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>此类为我们添加一个读取的方法,能够每次读取一行 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> <span class="literal">null</span>; </span><br><span class="line"><span class="keyword">while</span>( (line = in.readLine()) != <span class="literal">null</span> )&#123;</span><br><span class="line">    System.out.println(line); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意readLine的返回值只返回有效字符,不会含有换行符,所以当我们使用 <span color="red">System.out.print </span>进行输出的时候尽管文件中有换行,效果也不会出现换行效果</p>
+</li>
+</ul>
+<p><strong>使用字符缓冲流复制文件</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BufferedReader</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">FileReade</span> r(<span class="string">&quot;d:/file.txt&quot;</span>)); </span><br><span class="line"><span class="type">BufferedWriter</span> <span class="variable">out</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">FileWrite</span> r(<span class="string">&quot;d:/copyFile.txt&quot;</span>)); </span><br><span class="line"><span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> <span class="literal">null</span>; </span><br><span class="line"><span class="keyword">while</span> ( (line = in.readLine()) != <span class="literal">null</span> ) &#123; </span><br><span class="line">    out.write(line); </span><br><span class="line">    out.newLine(); </span><br><span class="line">&#125;</span><br><span class="line">out.close(); </span><br><span class="line">in.close();</span><br></pre></td></tr></table></figure>
+
+<h2 id="作业三国演义分章节"><a href="#作业三国演义分章节" class="headerlink" title="作业三国演义分章节"></a><strong>作业三国演义分章节</strong></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SanGuo</span> &#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> <span class="string">&quot;000 三国演义 上卷&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">0</span>; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> BufferedWriter writer; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">parse</span><span class="params">()</span> <span class="keyword">throws</span> IOException&#123; </span><br><span class="line">        <span class="type">BufferedReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">Fil</span> eReader(<span class="string">&quot;D:\\三国演义.txt&quot;</span>));</span><br><span class="line">        resetWriter(); </span><br><span class="line">        <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">while</span> ((content = reader.readLine()) != <span class="literal">null</span>) &#123; </span><br><span class="line">            analysisText(content);</span><br><span class="line">        &#125;</span><br><span class="line">        writer.close(); </span><br><span class="line">        reader.close();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">analysisText</span><span class="params">(String text)</span> <span class="keyword">throws</span> IOEx ception&#123;</span><br><span class="line">        String[] txt = text.split(<span class="string">&quot; &quot;</span>); </span><br><span class="line">        <span class="keyword">if</span> (txt[<span class="number">0</span>].startsWith(<span class="string">&quot;第&quot;</span>) &amp;&amp; txt[<span class="number">0</span>].endsWit <span class="title function_">h</span><span class="params">(<span class="string">&quot;回&quot;</span>)</span>) &#123;</span><br><span class="line">            num++; </span><br><span class="line">            <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> String.format(<span class="string">&quot;%03d &quot;</span>, num);</span><br><span class="line">            fileName = str + text; resetWriter(); </span><br><span class="line">        &#125;</span><br><span class="line">        writer.write(text); </span><br><span class="line">        writer.newLine();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">resetWriter</span><span class="params">()</span> <span class="keyword">throws</span> IOException&#123;</span><br><span class="line">        <span class="keyword">if</span>(writer != <span class="literal">null</span>)&#123; </span><br><span class="line">            writer.flush(); </span><br><span class="line">            writer.close();</span><br><span class="line">        &#125;</span><br><span class="line">        writer = <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;D:\\三国 分章节\\&quot;</span> + fileName + <span class="string">&quot;.txt&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        parse();</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a><strong>Properties</strong></h2><blockquote>
+<p>Properties 类表示了一个持久的属性集。<strong>Properties 可保存在流中或从流中加载</strong>。属性列表中每个键及其对应值都是一个字符串。 </p>
+<p>它有如下特点: </p>
+<p>1、Hashtable(和HashMap不同的是Hashtable是线程安全的)的子类，map集合中的方法都可以用。 </p>
+<p>2、该集合没有泛型。键值都是字符串。 </p>
+<p>3、它是一个可以持久化的属性集</p>
+</blockquote>
+
       
 
       
@@ -2121,11 +2989,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2142,6 +3010,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">自我介绍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">计算机操作系统</a>
               </li>
             
             <div class="clearfix"></div>
